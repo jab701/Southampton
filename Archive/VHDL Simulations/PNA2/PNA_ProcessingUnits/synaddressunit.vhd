@@ -1,0 +1,120 @@
+----------------------------------------------------------------------------------
+-- Company: 	ESD Group, School of Electronics, University Of Southampton
+-- Engineer:	Julian A Bailey <jab@ecs.soton.ac.uk>
+-- 
+-- Create Date:  26th October 2010
+-- Project Name: LibNeuron 2.0
+-- Module Name:  
+-- Description:  
+--
+-- Dependencies: None
+--
+-- Revision: 1.00 
+--
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity synaddressunit  is
+  generic 
+  (
+     -- Module Specific Configuration Parameters
+       Address_Width : natural := 32
+  );
+  port 
+  (
+       signal Clock : in std_logic;
+     -- System Control Input Signals
+       signal nReset   : in std_logic;
+       signal ce : in std_logic;
+     -- Combinatorial Input Signals
+       signal Go    : in std_logic;
+     -- Static Parameters  
+       signal AddressMax   : in std_logic_vector((Address_Width - 1) downto 0);
+     -- Combinatorial Output Signals
+       signal Address  : out std_logic_vector((Address_Width - 1) downto 0);
+       signal we : out std_logic;
+       signal Running : out std_logic
+  ); 
+end entity synaddressunit;
+
+architecture Behavioural of synaddressunit is
+
+signal Counter1_Q : std_logic_vector((Address_Width - 1) downto 0);
+signal Counter1_D : std_logic_vector((Address_Width - 1) downto 0);
+
+type STATE_TYPE is (Idle, Run, Run2, Run3);
+ 
+signal State_Q : STATE_TYPE;
+signal State_D : STATE_TYPE;
+
+signal Mem_we : std_logic;
+begin
+
+Address <= Counter1_Q;
+
+we <= Mem_we AND ce;
+
+seq: process (Clock) is
+begin
+  if rising_edge(Clock) then
+    if (nReset = '0') then
+      State_Q   <= Idle;
+      Counter1_Q <= (others => '0');
+    elsif (ce = '1') then
+      State_Q   <= State_D;
+      Counter1_Q <= Counter1_D;
+    end if;
+  end if;
+end process seq;
+
+com: process (State_Q, Counter1_Q, AddressMax, Go) is
+begin
+  case State_Q is
+  when Idle =>
+    Running <= '0';
+    Mem_We <= '0';
+    
+    Counter1_D <= (Others => '0');
+
+ 
+    if  (Go = '1') then
+      State_D <= Run;
+    else
+      State_D <= Idle;
+    end if;
+
+  when Run =>
+    Running <= '1';
+    Mem_We <= '0';
+    State_D <= Run2; 
+    Counter1_D <= Counter1_Q;       
+    
+  when Run2 =>
+    Running <= '1';
+    Mem_We <= '0';
+    Counter1_D <= Counter1_Q;
+    State_D <= Run3;    
+
+  when Run3 =>
+    Running <= '1';
+    Mem_We <= '1';
+    
+    if (Counter1_Q = (AddressMax - 1)) then
+      Counter1_D <= Counter1_Q;
+      State_D <= Idle;
+    else
+      Counter1_D <= Counter1_Q + 1;  
+      State_D <= Run;    
+    end if;              
+  end case;
+
+end process com;
+ 
+end architecture Behavioural;
+

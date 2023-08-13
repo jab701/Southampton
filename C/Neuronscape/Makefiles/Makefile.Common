@@ -1,0 +1,26 @@
+INLCUDE=-I. -I../Common/ 
+LIBDIR=-L.
+LIB=-lglut -lGL
+WXCFLAG=`wx-config --cxxflags`
+WXLIBS=` wx-config --libs`
+FLAGS=$(INCLUDE) $(WXCFLAG) $(LIBDIR) $(WXLIBS) $(LIB)
+CC=g++
+
+COMMON_SRC= Utilities.cpp CartesianVector.cpp SphericalVector.cpp DBRecord_ClientObject.cpp DB_ClientObject.cpp NetworkStackClient.cpp GLUtilities.cpp GLTexture.cpp
+
+COMMON_OBJ= $(COMMON_SRC:.cpp=.o)
+
+COMMON_SRC_WDIR= $(addprefix ../Common/,$(COMMON_SRC))
+
+all: $(COMMON_OBJ)
+
+.PHONY: all
+
+$(COMMON_OBJ):
+	$(CC) -c $(COMMON_SRC_WDIR) $(FLAGS)
+
+clean:
+	rm -f *.o
+
+.PHONY: clean
+

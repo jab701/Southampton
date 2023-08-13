@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SUSCAN Activity Viewer", "SUSCAN Activity Viewer\SUSCAN Activity Viewer.vcxproj", "{49FCBEF0-459F-45EA-84B8-5C585EBE303E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SUSCAN USB Ethernet Connector", "SUSCAN USB Ethernet Connector\SUSCAN USB Ethernet Connector.vcxproj", "{3207EBAB-E7BB-45D4-8F46-C5DF27EE843B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49FCBEF0-459F-45EA-84B8-5C585EBE303E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49FCBEF0-459F-45EA-84B8-5C585EBE303E}.Debug|Win32.Build.0 = Debug|Win32
+		{49FCBEF0-459F-45EA-84B8-5C585EBE303E}.Release|Win32.ActiveCfg = Release|Win32
+		{49FCBEF0-459F-45EA-84B8-5C585EBE303E}.Release|Win32.Build.0 = Release|Win32
+		{3207EBAB-E7BB-45D4-8F46-C5DF27EE843B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3207EBAB-E7BB-45D4-8F46-C5DF27EE843B}.Debug|Win32.Build.0 = Debug|Win32
+		{3207EBAB-E7BB-45D4-8F46-C5DF27EE843B}.Release|Win32.ActiveCfg = Release|Win32
+		{3207EBAB-E7BB-45D4-8F46-C5DF27EE843B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

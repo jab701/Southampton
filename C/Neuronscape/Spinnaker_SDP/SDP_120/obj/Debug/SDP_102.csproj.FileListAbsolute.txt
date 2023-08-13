@@ -1,0 +1,5 @@
+W:\Development\Neuronscape\Spinnaker_SDP\bin\Debug\SDP_120.dll
+W:\Development\Neuronscape\Spinnaker_SDP\bin\Debug\SDP_120.pdb
+W:\Development\Neuronscape\Spinnaker_SDP\SDP_120\obj\Debug\ResolveAssemblyReference.cache
+W:\Development\Neuronscape\Spinnaker_SDP\SDP_120\obj\Debug\SDP_120.dll
+W:\Development\Neuronscape\Spinnaker_SDP\SDP_120\obj\Debug\SDP_120.pdb

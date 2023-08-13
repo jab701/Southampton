@@ -1,0 +1,66 @@
+# Reading C:/Software/modeltech64_10.1a/tcl/vsim/pref.tcl 
+# //  ModelSim SE-64 10.1a Feb 22 2012 
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# OpenFile {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PNA_ProcessingUnits.mpf} 
+# Loading project PNA_ProcessingUnits
+# vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketAssembler.vhd}
+# Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NETWORKDEFS
+# -- Compiling entity PacketAssembler
+# -- Compiling architecture Behavioural of PacketAssembler
+# -- Loading entity twos_comp_16b
+# -- Loading entity uart_tx
+# 
+# 
+# vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd}
+# Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NETWORKDEFS
+# -- Compiling entity PacketDisassembler
+# -- Compiling architecture Behavioural of PacketDisassembler
+# -- Loading entity uart_tx
+# ** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd(73): (vcom-1484) Unknown formal identifier "rx".
+# 
+# ** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd(74): (vcom-1484) Unknown formal identifier "Data_Clock".
+# 
+# ** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd(75): (vcom-1484) Unknown formal identifier "Empty".
+# 
+# ** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd(76): (vcom-1484) Unknown formal identifier "RD".
+# 
+# ** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd(77): (vcom-1484) Unknown formal identifier "Data_Out".
+# 
+# ** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd(79): VHDL Compiler exiting
+# 
+# 
+# vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketDisassembler.vhd}
+# Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NETWORKDEFS
+# -- Compiling entity PacketDisassembler
+# -- Compiling architecture Behavioural of PacketDisassembler
+# -- Loading entity uart_rx
+# 
+# 

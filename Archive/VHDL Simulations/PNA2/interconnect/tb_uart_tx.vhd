@@ -1,0 +1,54 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+library work;
+
+entity tb_uart_tx is
+  generic 
+  (PacketLength : natural := 8;
+   clock_period : time := 1 ns);
+end entity tb_uart_tx;
+
+architecture Behavioural of tb_uart_tx is
+
+signal clock   : std_logic := '0';
+signal nReset  : std_logic := '0';
+signal FIFO_Full : std_logic;
+signal FIFO_WCLK : std_logic := '0';
+signal FIFO_WE   : std_logic;
+signal FIFO_Data : std_logic_vector(PacketLength-1 downto 0);
+signal tx    : std_logic;
+
+signal Send : std_logic;
+begin
+clock <= NOT clock after clock_period/2;
+nReset <= '0', '1' after clock_period*10;
+
+Send <= '0', '1' after 1 ms, '0' after 1.1 ms;
+FIFO_Data <= x"55";
+
+process is
+begin
+  FIFO_WE <= '0';
+  wait until rising_edge(Send);
+  FIFO_WE <= '1';
+  wait until rising_edge(Clock);
+end process;
+  
+UART_TX_1: entity work.uart_tx
+  generic map(PacketLength => PacketLength)
+  port map(Clock => Clock,
+           nReset => nReset,
+           FIFO_Full => FIFO_Full,
+           FIFO_CLK => Clock,
+           FIFO_WE => FIFO_WE,
+           FIFO_DATA_IN => FIFO_DATA,
+           tx => tx);
+end architecture Behavioural;
+
+
+
+
+

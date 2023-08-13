@@ -1,0 +1,90 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+use std.textio.ALL;
+
+entity TB_FIFO  is
+ constant width : natural := 8;
+ constant depth : natural := 2;
+end entity TB_FIFO;
+
+architecture Behavioural of TB_FIFO is
+signal Clock  : std_logic := '0';
+signal nReset : std_logic := '1';
+signal cke    : std_logic := '1';
+
+-- FIFO Flags
+signal empty : std_logic;
+signal full  : std_logic;
+
+-- Write Port
+signal we : std_logic;
+signal data_write : std_logic_vector(width-1 downto 0);
+
+-- Read Port
+signal rd : std_logic;
+signal data_read : std_logic_vector(width-1 downto 0); 
+     
+signal Trigger : std_logic;
+begin
+
+Clock <= NOT(Clock) after 5 ns;
+nReset <= '0', '1' after 10 ns;
+cke <= '1';
+
+Trigger <= '0', 
+           '1' after 0.5 us,
+           '0' after 0.6 us,
+           '1' after 1.5 us,
+           '0' after 1.6 us,
+           '1' after 2.5 us,
+           '0' after 2.6 us,
+           '1' after 3.5 us,
+           '0' after 3.6 us,
+           '1' after 4.5 us,
+           '0' after 4.6 us,
+           '1' after 14.7 us,
+           '0' after 14.8 us;
+
+process is
+  begin
+    we <= '0';
+    wait until rising_edge(Trigger);
+    we <= '1';
+    wait until rising_edge(Clock);
+  end process;
+      
+data_write <= x"01", x"02" after 1 us, x"03" after 2 us, x"04" after 3 us, x"05" after 4 us;
+
+rd <= '0',
+      '1' after 10 us,
+      '0' after 10.5 us,
+      '1' after 11 us,
+      '0' after 11.5 us,
+      '1' after 12 us,
+      '0' after 12.5 us,
+      '1' after 13 us,
+      '0' after 13.5 us,
+      '1' after 14 us,
+      '0' after 14.5 us,
+      '1' after 15 us,
+      '0' after 15.1 us;
+
+FIFO_1: entity work.FIFO
+        generic map(width => width,
+                    depth => depth)
+        port map(Clock => Clock,
+                 nReset => nReset,
+                 cke => cke,
+                 empty => empty,
+                 full => full,
+                 we => we,
+                 rd => rd,
+                 data_write => data_write,
+                 data_read => data_read);
+                 
+                                      
+end architecture Behavioural;
+

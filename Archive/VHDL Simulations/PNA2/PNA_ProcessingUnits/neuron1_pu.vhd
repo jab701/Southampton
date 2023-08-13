@@ -1,0 +1,182 @@
+----------------------------------------------------------------------------------
+-- Company: 	ESD Group, School of Electronics, University Of Southampton
+-- Engineer:	Julian A Bailey <jab@ecs.soton.ac.uk>
+-- 
+-- Create Date:  26th October 2010
+-- Project Name: LibNeuron 2.0
+-- Module Name:  
+-- Description:  
+--
+-- Dependencies: None
+--
+-- Revision: 1.00 
+--
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+library PNA_LibNeuron_com;
+library Memory_Controller;
+
+entity neuron1_pu is
+  generic 
+  (
+     -- Module Specific Configuration Parameters
+     address_width : natural := 4
+  );
+  port 
+  (
+     signal clock   : in  std_logic;
+     signal nreset  : in std_logic;
+     signal ce      : in std_logic;
+     
+     signal Trigger : in std_logic;
+     signal Running : out std_logic;
+     
+     signal NumNeurons : in std_logic_vector((address_width-1) downto 0);
+     
+     -- TX Bus
+     signal tx_clk   : out std_logic;
+     signal tx_data  : out std_logic;
+     signal tx_pause : in std_logic;
+
+     -- RX Bus
+     signal rx_clk   : in std_logic;
+     signal rx_data  : in std_logic;
+     signal rx_pause : out std_logic); 
+end entity neuron1_pu;
+
+architecture Behavioural of neuron1_pu is
+signal nReset_ex_pu : std_logic;
+signal nReset_ex : std_logic;
+
+signal pu_address : std_logic_vector((address_width-1) downto 0);
+signal pu_address_buffer : std_logic_vector((address_width-1) downto 0); 
+signal pu_we : std_logic;
+
+signal AddrUnit_Running : std_logic;
+signal AddrUnit_Go : std_logic;
+
+signal AP_ON  : std_logic;
+signal AP_OFF : std_logic;
+
+signal mem_write_addr : std_logic_vector(address_width-1 downto 0);
+signal mem_write_data : std_logic_vector(103 downto 0);
+
+signal syn_mem_we : std_logic;
+signal enable_mem_we : std_logic;
+signal param_mem_we : std_logic;
+
+signal syn_mem_read    : std_logic_vector(15 downto 0);
+signal enable_mem_read : std_logic;
+signal param_mem_read  : std_logic_vector(103 downto 0);
+signal state_mem_read  : std_logic_vector(43 downto 0);
+
+signal state_mem_write : std_logic_vector(43 downto 0);
+
+begin
+nReset_ex <= nReset_ex_pu AND enable_mem_read;
+
+process (Clock) is
+begin
+  if (rising_edge(Clock)) then
+    if (ce = '1') then
+      pu_address_buffer <= pu_address;
+    end if;
+  end if;    
+end process;
+
+N1_SYN_MEM: entity Memory_Controller.dp_rw_sram
+   generic map(address_width => address_width,
+               data_width => 16)
+   port map(Clock => Clock,
+            we => syn_mem_we,
+            rd => '1',
+            addr_read => pu_address,
+            addr_write => mem_write_addr,
+            data_read => syn_mem_read,
+            data_write => mem_write_data(15 downto 0));
+            
+N1_ENABLE_MEM:entity Memory_Controller.dp_rw_sram
+   generic map(address_width => address_width,
+               data_width => 1)
+   port map(Clock => Clock,
+            we => enable_mem_we,
+            rd => '1',
+            addr_read => pu_address,
+            addr_write => mem_write_addr,
+            data_read(0) => enable_mem_read,
+            data_write(0) => mem_write_data(0));
+
+N1_PARAM_MEM:entity Memory_Controller.dp_rw_sram
+   generic map(address_width => address_width,
+               data_width => 104)
+   port map(Clock => Clock,
+            we => param_mem_we,
+            rd => '1',
+            addr_read => pu_address,
+            addr_write => mem_write_addr,
+            data_read => param_mem_read,
+            data_write => mem_write_data);
+                         
+N1_STATE_MEM: entity Memory_Controller.dp_rw_sram
+   generic map(address_width => address_width,
+               data_width => 44)
+   port map(Clock => Clock,
+            we => pu_we,
+            rd => '1',
+            addr_read => pu_address,
+            addr_write => pu_address_buffer,
+            data_read => state_mem_read,
+            data_write => state_mem_write);
+            
+pu_controller_1: entity work.pu_controller
+                 port map(Clock   => Clock,
+                          nReset  => nReset,
+                          ce => ce,
+                          
+                          Trigger => Trigger,
+                          AddrUnit_Running => AddrUnit_Running,
+                          
+                          Running => Running,
+                          nReset_Ex   => nReset_ex_pu,
+                          AddrUnit_Go => AddrUnit_Go);
+                            
+address_unit1: entity work.neuronaddressunit
+               generic map(Address_Width =>address_width)
+               port map(Clock => Clock,
+                        nReset => nReset,
+                        ce => ce,
+                        Go => AddrUnit_Go,
+                        AddressMax => NumNeurons,
+                        Address => pu_Address,
+                        we => pu_we,
+                        Running => AddrUnit_Running);
+                          
+-- execution pipeline phase
+neuron1_ex: entity PNA_LibNeuron_com.Neuron1_com
+            generic map(32)
+            port map(nReset => nReset_ex,
+                    -- State Inputs/Outputs
+                     Reg_In => state_mem_read,
+                     Reg_Out => state_mem_write,
+                    -- Combinatorial Input Signals 
+                     SynSum => syn_mem_read,
+                    -- Static Parameters        
+                     Parameters => param_mem_read,  
+                    -- Combinatorial Output Signals
+                     AP_ON => AP_ON,
+                     AP_OFF => AP_OFF); 
+
+-- Send Packet Phase
+
+-- Receieve packet Processing
+
+end architecture Behavioural;
+
+

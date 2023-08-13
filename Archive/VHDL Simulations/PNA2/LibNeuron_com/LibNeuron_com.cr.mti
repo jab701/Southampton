@@ -1,0 +1,114 @@
+{W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/synapse_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/synapse_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Synapse_Com
+-- Compiling architecture Behavioural of Synapse_Com
+-- Loading entity Timer_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/neuron1_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/neuron1_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Neuron1_Com
+-- Compiling architecture Behavioural of Neuron1_Com
+-- Loading entity Threshold_Com
+-- Loading entity Burst_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/burst_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/burst_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Burst_Com
+-- Compiling architecture Behavioural of Burst_Com
+-- Loading entity Timer_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/neuron2_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/neuron2_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Neuron2_Com
+-- Compiling architecture Behavioural of Neuron2_Com
+-- Loading entity Osc_Com
+-- Loading entity Burst_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/osc_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/osc_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Osc_Com
+-- Compiling architecture Behavioural of Osc_Com
+-- Loading entity Timer_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/threshold_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/threshold_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Threshold_Com
+-- Compiling architecture Behavioural of Threshold_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/timer_com.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/timer_com.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Timer_Com
+-- Compiling architecture Behavioural of Timer_Com
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/TBLibNeuron.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/LibNeuron_com/TBLibNeuron.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package std_logic_textio
+-- Compiling entity TBLibNeuron
+-- Compiling architecture TimerTB of TBLibNeuron
+-- Loading entity Timer_Com
+-- Compiling architecture NeuronBlocksTB of TBLibNeuron
+-- Loading entity TBLibNeuron
+-- Loading entity Threshold_Com
+-- Loading entity Osc_Com
+-- Loading entity Burst_Com
+-- Compiling architecture Neuron1TB of TBLibNeuron
+-- Loading entity TBLibNeuron
+-- Loading entity Neuron1_Com
+-- Compiling architecture Neuron2TB of TBLibNeuron
+-- Loading entity TBLibNeuron
+-- Loading entity Neuron2_Com
+-- Compiling architecture SynapsesTB of TBLibNeuron
+-- Loading entity TBLibNeuron
+-- Loading entity Synapse_Com
+-- Compiling architecture Default of TBLibNeuron
+-- Loading entity TBLibNeuron
+
+} {} {}}

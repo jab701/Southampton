@@ -1,0 +1,98 @@
+{C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd} {0 {vcom -work work -2002 -explicit {C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd}
+Model Technology ModelSim SE vcom 6.0d Compiler 2005.04 Apr 25 2005
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity regpio
+-- Compiling architecture rtl of regpio
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(84): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(85): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(86): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(87): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(88): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(89): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(90): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(91): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(93): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(94): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(95): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(96): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(97): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(98): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(99): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(100): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(102): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(103): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(104): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(105): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(106): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(107): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(108): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(109): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(111): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(112): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(113): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(114): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(115): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(116): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(117): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(118): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(127): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(128): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(129): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(130): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(131): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(132): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(133): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(134): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(136): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(137): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(138): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(139): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(140): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(141): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(142): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(143): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(145): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(146): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(147): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(148): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(149): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(150): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(151): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(152): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(154): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(155): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(156): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(157): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(158): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(159): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(160): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(161): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(163): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(164): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(165): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(166): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(167): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(168): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(169): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(170): Expected length is 12; string length is 9.
+** Error: C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/REGPIO.vhd(563): VHDL Compiler exiting
+
+} {8.0 81.0} {}} {C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/UDMACRC.vhd} {1 {vcom -work work -93 -explicit -check_synthesis {C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/UDMACRC.vhd}
+Model Technology ModelSim SE vcom 6.0d Compiler 2005.04 Apr 25 2005
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity udmacrc
+-- Compiling architecture rtl of udmacrc
+
+} {} {}} {C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/timer.vhd} {1 {vcom -work work -93 -explicit -check_synthesis {C:/Documents and Settings/Administrator/My Documents/Part IV GDP/V1/timer.vhd}
+Model Technology ModelSim SE vcom 6.0d Compiler 2005.04 Apr 25 2005
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity timer
+-- Compiling architecture rtl of timer
+
+} {} {}}

@@ -1,0 +1,92 @@
+
+----------------------------------------------------------------------------------
+-- Company: 	ESD Group, School of Electronics, University Of Southampton
+-- Engineer:	Julian A Bailey <jab@ecs.soton.ac.uk>
+-- 
+-- Create Date:  26th October 2010
+-- Project Name: LibNeuron 2.0
+-- Module Name:  
+-- Description:  
+--
+-- Dependencies: None
+--
+-- Revision: 1.00 
+--
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+library PNA_LibNeuron_com;
+
+entity Timer is
+  generic 
+  (
+     -- Module Specific Configuration Parameters
+     timer_width : natural := 4
+  );
+  port 
+  (
+     signal clock   : in std_logic;
+     signal nReset  : in std_logic;
+     signal Pause   : in std_logic;
+     signal Period  : in std_logic_vector((timer_width-1) downto 0);
+     signal Q       : out std_logic     
+   ); 
+end entity Timer;
+
+architecture Behavioural of Timer is
+
+type STATE_TYPE is (rst, off, pulse);
+signal State_D, State_Q : STATE_TYPE;
+signal Counter_D, Counter_Q : std_logic_vector((timer_width-1) downto 0);
+begin
+
+process (Clock) is
+begin
+  if (rising_edge(Clock)) then
+    if (nReset = '0') then
+      Counter_Q <= (others => '0');
+      State_Q <= rst;  
+    elsif (Pause = '0') then
+      Counter_Q <= Counter_D;
+      State_Q <= State_D;  
+    end if;
+  end if;
+end process;
+
+process (State_Q, Counter_Q, Period) is
+begin
+  case State_Q is
+    
+  when rst =>
+    Q <= '0';
+    Counter_D <= (others => '0');
+    State_D <= off;
+      
+  when off =>
+    Q <= '0';
+    
+    if (Counter_Q = (Period - 1)) then
+      Counter_D <= Counter_Q;
+      State_D <= pulse;
+    else
+      Counter_D <= Counter_Q + 1; 
+      State_D <= off; 
+    end if;
+    
+  when pulse =>
+    Q <= '1';
+    Counter_D <= (others => '0');
+    State_D <= off;  
+  end case;    
+end process;
+
+end architecture Behavioural;
+
+
+

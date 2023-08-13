@@ -1,0 +1,35 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+library PNA_LibNeuron_com;
+library Memory_Controller;
+
+entity ProcessingUnit is
+  generic 
+  (
+     -- Module Specific Configuration Parameters
+     address_width : natural := 4
+  );
+  port 
+  (
+     signal clock   : in  std_logic;
+     signal nreset  : in std_logic;
+     signal ce      : in std_logic;
+     
+     signal Trigger : in std_logic;
+     signal Running : out std_logic;
+     
+     signal NumElements : in std_logic_vector((address_width-1) downto 0);
+     
+     -- TX Bus
+     signal tx_clk   : out std_logic;
+     signal tx_data  : out std_logic;
+     signal tx_pause : in std_logic;
+
+     -- RX Bus
+     signal rx_clk   : in std_logic;
+     signal rx_data  : in std_logic;
+     signal rx_pause : out std_logic); 
+end entity ProcessingUnit;

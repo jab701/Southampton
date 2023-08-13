@@ -1,0 +1,56 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity uart_deserializer is
+  generic(PacketLength : natural := 32);
+  port 
+  (
+     signal clock   : in std_logic;
+     signal nReset  : in std_logic;
+     
+     signal SERIAL_IN : in std_logic;
+     signal FLUSH     : in std_logic;
+     
+     signal DATA_OUT    : out std_logic_vector(PacketLength+1 downto 0)); 
+end entity uart_deserializer;
+
+architecture Behavioural of uart_deserializer is
+
+signal D : std_logic_vector(PacketLength+1 downto 0);
+signal Q : std_logic_vector(PacketLength+1 downto 0);
+
+begin
+  
+DATA_OUT <= Q;
+
+process (FLUSH, SERIAL_IN, Q) is
+begin
+  if FLUSH = '1' then
+    D(PacketLength+1) <= SERIAL_IN;
+    D(PacketLength downto 0) <=  (others => '1');    
+  else
+    D(PacketLength+1) <= SERIAL_IN;
+    D(PacketLength downto 0) <=  Q(PacketLength+1 downto 1);
+  end if;   
+end process; 
+
+process (Clock) is
+begin
+  if rising_edge(Clock) then
+    if (nReset = '0') then
+      Q <= (others => '1');
+    else
+      Q <= D;
+    end if;
+  end if;   
+end process;
+
+end architecture Behavioural;
+
+
+
+
+
+

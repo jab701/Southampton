@@ -1,0 +1,123 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity uart_tx is
+  generic (PacketLength : natural := 32);
+  port
+  (
+     signal clock   : in std_logic;
+     signal nReset  : in std_logic;
+     signal CKE     : in std_logic;
+     
+     signal FIFO_Full : out std_logic;
+     signal FIFO_CLK : in std_logic;
+     signal FIFO_WE   : in std_logic;
+     signal FIFO_Data_IN : in std_logic_vector(PacketLength-1 downto 0);
+     
+     signal tx    : out std_logic); 
+     
+   constant ActualPacketLength : natural := PacketLength + 2;     
+end entity uart_tx;
+
+architecture Behavioural of uart_tx is
+
+signal Shift_En : std_logic;
+signal Shift_Output : std_logic;
+
+signal FIFO_Empty : std_logic;
+signal FIFO_RD    : std_logic;
+signal FIFO_Data  : std_logic_vector(PacketLength-1 downto 0);
+
+signal UART_Data: std_logic_vector(ActualPacketLength-1 downto 0);
+
+type STATE_TYPE is (IDLE, READ_FIFO, TRANSMIT);
+signal State_D, State_Q : STATE_TYPE;
+
+signal Bit_CounterD, Bit_CounterQ : std_logic_vector(15 downto 0);
+
+begin
+UART_Data(0) <= '0';
+UART_Data(PacketLength downto 1) <= FIFO_Data;
+UART_Data(ActualPacketLength-1) <= '1';
+  
+FIFO_1: entity work.async_fifo
+  generic map(width => PacketLength,
+              depth => 6)
+  port map(nReset => nReset,
+           empty => FIFO_Empty,
+           full => FIFO_full,
+           wclk => FIFO_clk,
+           we => FIFO_we,
+           data_write => FIFO_data_IN,
+           rclk => Clock,
+           rd => FIFO_RD,
+           data_read => FIFO_Data);
+           
+UARTSERIALIZER_1: entity work.uart_serializer
+       generic map(PacketLength => ActualPacketLength)
+       port map(Clock => Clock,
+                nReset => nReset,
+                Data_IN => UART_Data,
+                Shift_En => Shift_En,
+                Serial_Out => Shift_Output);
+
+process (Clock) is
+begin
+  if rising_edge(Clock) then
+    if (nReset = '0') then
+      State_Q <= IDLE;
+      Bit_CounterQ <= (others => '0');
+    else
+      State_Q <= State_D;
+      Bit_CounterQ <= Bit_CounterD;      
+    end if;
+  end if;    
+end process;
+
+process (State_Q, FIFO_EMPTY, Bit_CounterQ, Shift_Output) is
+begin
+  case State_Q is 
+  when IDLE =>
+
+    Bit_CounterD <= (others => '0');
+    
+    tx <= '1';
+    Shift_En <= '0';
+    
+    if FIFO_EMPTY = '1' then
+      State_D <= IDLE;
+      FIFO_RD <= '0';
+    else
+      State_D <= READ_FIFO;
+      FIFO_RD <= '1';
+    end if;
+    
+  when READ_FIFO =>
+    Bit_CounterD <= (others => '0');
+    FIFO_RD <= '0';
+    tx <= '1';
+    Shift_En <= '0';
+    
+    State_D <= TRANSMIT;
+    
+  when TRANSMIT =>
+    Bit_CounterD <= Bit_CounterQ + 1;
+    FIFO_RD <= '0';
+    tx <= Shift_Output;
+    Shift_En <= '1';
+    
+    if (Bit_CounterQ = std_logic_vector(to_unsigned(ActualPacketLength-1,16))) then
+      State_D <= IDLE;
+    else
+        State_D <= TRANSMIT;
+    end if;
+   
+  end case;    
+end process;
+
+end architecture Behavioural;
+
+
+

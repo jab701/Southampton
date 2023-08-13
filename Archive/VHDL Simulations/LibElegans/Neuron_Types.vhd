@@ -1,0 +1,63 @@
+----------------------------------------------------------------------------------
+-- Company: 	ESD Group, School of Electronics, University Of Southampton
+-- Engineer:	Julian A Bailey - PhD Research Student 
+-- 
+-- Create Date:    26/02/2007 
+-- Design Name: 
+-- Module Name:    C Elegans Neuron Types
+-- Project Name:   C Elegans Locomotion
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: Library - MBED_Claverol
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+library LibNeuron;
+use LibNeuron.ALL;
+use LibNeuron.TYPEDEFINITIONS.ALL;
+
+entity ElegansNeuron is
+    generic(NumberSynapses   : Positive);
+    port (signal Clock       : std_logic;
+          signal CKE         : std_logic;
+          signal nReset      : std_logic;
+          -- Threshold Block Signals
+          Signal Dendrites   : in signed_vector((NumberSynapses - 1) downto 0);          
+          -- Output Signal
+          Signal Axon        : out std_logic
+          ); 
+end ElegansNeuron;
+
+architecture CLSM of ElegansNeuron is
+begin
+M: entity LibNeuron.Neuron1(Behavioural2)
+                 generic map(NumberSynapses,5,x"0001",x"FFFF",x"FF",16)
+                 port map(Clock, CKE, nReset,Dendrites, x"2710", x"1388", Axon);    
+end architecture CLSM;
+
+architecture CLSAB of ElegansNeuron is
+begin
+AB: entity LibNeuron.Neuron1(Behavioural2)
+                 generic map(NumberSynapses,5,x"0002",x"FFFF",x"01",12)
+                 port map(Clock, CKE, nReset, Dendrites, x"3E8",x"7D0", Axon);     
+end architecture CLSAB;
+
+architecture CLSD of ElegansNeuron is
+begin
+D: entity LibNeuron.Neuron1(Behavioural2)
+                 generic map(NumberSynapses,5,x"0001",x"FFFF",x"01",12)
+                 port map(Clock, CKE, nReset, Dendrites, x"3E8",x"7D0", Axon);    
+end architecture CLSD;
+
+

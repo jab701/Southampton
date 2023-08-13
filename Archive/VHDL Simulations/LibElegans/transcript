@@ -1,0 +1,24 @@
+# C:/CAD/VHDL Simulations/LibElegans/Results/Elegans Coil.wlf opened as dataset "Elegans_Coil"
+# C:/CAD/VHDL Simulations/LibElegans/Results/Elegans F-R-F.wlf opened as dataset "Elegans_F_R_F"
+# C:/CAD/VHDL Simulations/LibElegans/Results/Elegans Fwd UNC25 knckout.wlf opened as dataset "Elegans_Fwd_UNC25_knckout"
+add wave \
+{Elegans_Coil:/tb_elegansloco2/mscd0 } \
+{Elegans_Coil:/tb_elegansloco2/mscd1 } \
+{Elegans_Coil:/tb_elegansloco2/mscd2 } \
+{Elegans_Coil:/tb_elegansloco2/mscd3 } \
+{Elegans_Coil:/tb_elegansloco2/mscd4 } \
+{Elegans_Coil:/tb_elegansloco2/mscd5 } \
+{Elegans_Coil:/tb_elegansloco2/mscd6 } \
+{Elegans_Coil:/tb_elegansloco2/mscd7 } \
+{Elegans_Coil:/tb_elegansloco2/mscd8 } \
+{Elegans_Coil:/tb_elegansloco2/mscd9 } \
+{Elegans_Coil:/tb_elegansloco2/mscv0 } \
+{Elegans_Coil:/tb_elegansloco2/mscv1 } \
+{Elegans_Coil:/tb_elegansloco2/mscv2 } \
+{Elegans_Coil:/tb_elegansloco2/mscv3 } \
+{Elegans_Coil:/tb_elegansloco2/mscv4 } \
+{Elegans_Coil:/tb_elegansloco2/mscv5 } \
+{Elegans_Coil:/tb_elegansloco2/mscv6 } \
+{Elegans_Coil:/tb_elegansloco2/mscv7 } \
+{Elegans_Coil:/tb_elegansloco2/mscv8 } \
+{Elegans_Coil:/tb_elegansloco2/mscv9 } 

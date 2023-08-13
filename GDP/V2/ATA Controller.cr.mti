@@ -1,0 +1,36 @@
+{C:/Part IV GDP/V2/ATA6TBMDMA.vhd} {1 {vcom -work work -2002 -explicit {C:/Part IV GDP/V2/ATA6TBMDMA.vhd}
+Model Technology ModelSim SE vcom 6.0a Compiler 2004.09 Sep 24 2004
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity ata6tbmdma
+-- Compiling architecture testbench of ata6tbmdma
+-- Loading entity ata_controller
+
+} {} {}} {C:/Part IV GDP/V2/ATA6TBUDMA.vhd} {1 {vcom -work work -2002 -explicit {C:/Part IV GDP/V2/ATA6TBUDMA.vhd}
+Model Technology ModelSim SE vcom 6.0a Compiler 2004.09 Sep 24 2004
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity ata6tbudma
+-- Compiling architecture testbench of ata6tbudma
+-- Loading entity ata_controller
+
+} {} {}} {C:/Part IV GDP/V2/ATA6TB-resets.vhd} {1 {vcom -work work -2002 -explicit {C:/Part IV GDP/V2/ATA6TB-resets.vhd}
+Model Technology ModelSim SE vcom 6.0a Compiler 2004.09 Sep 24 2004
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity ata6tb
+-- Compiling architecture testbench of ata6tb
+-- Loading entity ata_controller
+
+} {} {}} {C:/Part IV GDP/V2/ATA6.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -source {C:/Part IV GDP/V2/ATA6.vhd}
+Model Technology ModelSim SE vcom 6.0a Compiler 2004.09 Sep 24 2004
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity ata_controller
+-- Compiling architecture rtl of ata_controller
+
+} {} {}}

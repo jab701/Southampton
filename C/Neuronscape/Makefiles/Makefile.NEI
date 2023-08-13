@@ -1,0 +1,47 @@
+INLCUDE=-I. -I../Common/ -I"../Neuronscape\ NEI/"
+LIBDIR=-L.
+WXCFLAG=`wx-config --cxxflags`
+WXLIBS=` wx-config --libs --gl-libs`
+
+#only set this flag if compiling the NEI (which this makefile is for).
+CPPFLAGS=-DNEURONSCAPE_NEI
+
+# graphical tools need to be run in a directory where the textures are local
+TGT=../NEI
+
+FLAGS=$(INCLUDE) $(WXCFLAG) $(LIBDIR) $(WXLIBS) $(CPPFLAGS)
+CC=g++
+# if ECHO is set, the commands are not run but instead just printed (with all the backticked commands enumerated).  if unset then operates as if it wasn't there
+#ECHO=echo
+ECHO=
+
+COMMON_SRC= Utilities.cpp CartesianVector.cpp SphericalVector.cpp \
+	    DBRecord_ClientObject.cpp DB_ClientObject.cpp NetworkStackClient.cpp \
+	    GLUtilities.cpp GLTexture.cpp View3D.cpp
+# the view3D is located in the common src directory so is now in above list
+SRC= SCP.cpp SpinnakerNetStack.cpp \
+     RetinaThread.cpp MotorThread.cpp \
+     EyePanel.cpp \
+     MainFrame.cpp App.cpp
+
+# need separate names for objects, and source with path (relative will do)
+COMMON_OBJ= $(COMMON_SRC:.cpp=.o)
+COMMON_SRC_WDIR= $(addprefix ../Common/,$(COMMON_SRC))
+OBJ= $(SRC:.cpp=.o)
+SRC_WDIR= $(addprefix ../Neuronscape\ NEI/,$(SRC))
+
+
+NEI: $(OBJ) $(COMMON_OBJ)
+	$(ECHO) $(CC) $(OBJ) $(COMMON_OBJ) $(FLAGS) -o ${TGT}
+
+$(OBJ):
+	$(ECHO) $(CC) -c $(SRC_WDIR) $(FLAGS)
+
+$(COMMON_OBJ):
+	$(ECHO) $(CC) -c $(COMMON_SRC_WDIR) $(FLAGS)
+
+clean:
+	-rm -f *.o
+	-rm -f NEI
+
+.PHONY: clean

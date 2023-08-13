@@ -1,0 +1,202 @@
+{{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd}} {0 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd(23): Library pna_libneuron_com not found.
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd(25): VHDL Compiler exiting
+
+} {9.0 11.0} {}} {{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/pu_controller.vhd}} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/pu_controller.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity pu_controller
+-- Compiling architecture Behavioural of pu_controller
+
+} {} {}} {{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synaddressunit.vhd}} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synaddressunit.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity synaddressunit
+-- Compiling architecture Behavioural of synaddressunit
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/twos_comp_32b.vhd} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/twos_comp_32b.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity twos_comp_16b
+-- Compiling architecture Behavioural of twos_comp_16b
+-- Loading entity PlusOneAdder16b
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/CarryLookAhead_16b.vhd} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/CarryLookAhead_16b.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity CarryLookAhead_16b
+-- Compiling architecture Behavioural of CarryLookAhead_16b
+-- Loading entity CarryLookAhead_4b
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/HalfAdder.vhd} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/HalfAdder.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity HalfAdder
+-- Compiling architecture Behavioural of HalfAdder
+
+} {} {}} {{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd}} {0 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd(23): Library pna_libneuron_com not found.
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd(26): VHDL Compiler exiting
+
+} {9.0 11.0} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd} {0 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd(23): Library pna_libneuron_com not found.
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron1_pu.vhd(26): VHDL Compiler exiting
+
+} {9.0 11.0} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PlusOneAdder32b.vhd} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PlusOneAdder32b.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity PlusOneAdder16b
+-- Compiling architecture Behavioural of PlusOneAdder16b
+-- Loading entity HalfAdder
+-- Loading entity CarryLookAhead_16b
+
+} {} {}} {{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuronaddressunit.vhd}} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuronaddressunit.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity neuronaddressunit
+-- Compiling architecture Behavioural of neuronaddressunit
+
+} {} {}} {{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron2_pu.vhd}} {0 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron2_pu.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron2_pu.vhd(23): Library pna_libneuron_com not found.
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/neuron2_pu.vhd(26): VHDL Compiler exiting
+
+} {9.0 11.0} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketAssembler.vhd} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/PacketAssembler.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NETWORKDEFS
+-- Compiling entity PacketAssembler
+-- Compiling architecture Behavioural of PacketAssembler
+-- Loading entity twos_comp_16b
+-- Loading entity uart_tx
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/CarryLookAhead_4b.vhd} {1 {vcom -work work -2002 -explicit -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/CarryLookAhead_4b.vhd}
+Model Technology ModelSim SE-64 vcom 10.1a Compiler 2012.02 Feb 21 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity CarryLookAhead_4b
+-- Compiling architecture Behavioural of CarryLookAhead_4b
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd} {0 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity synapse_pu
+-- Compiling architecture Behavioural of synapse_pu
+** Error: (vcom-11) Could not find work.n1_mem_ctrl.
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd(95): (vcom-1195) Cannot find expanded name "work.N1_Mem_Ctrl".
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd(95): Unknown expanded name.
+-- Loading entity pu_controller
+-- Loading entity addressunit2
+-- Loading entity Synapse_Com
+** Error: W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/synapse_pu.vhd(173): VHDL Compiler exiting
+
+} {11.0 14.0 17.0 18.0} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/pu_controller.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:\CAD\VHDL Simulations\PNA2\PNA_ProcessingUnits\pu_controller.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity pu_controller
+-- Compiling architecture Behavioural of pu_controller
+
+} {} {}} {{W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/Timer.vhd}} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/Timer.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Timer
+-- Compiling architecture Behavioural of Timer
+
+} {} {}} {W:/CAD/VHDL Simulations/PNA2/PNA_ProcessingUnits/Timer.vhd} {1 {vcom -work work -93 -explicit -check_synthesis -vopt {W:\CAD\VHDL Simulations\PNA2\PNA_ProcessingUnits\Timer.vhd}
+Model Technology ModelSim SE-64 vcom 10.0b Compiler 2011.05 May  5 2011
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Timer
+-- Compiling architecture Behavioural of Timer
+
+} {} {}}

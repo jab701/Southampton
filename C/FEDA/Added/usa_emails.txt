@@ -1,0 +1,28 @@
+John D. Cressler <cressler@ece.gatech.edu>
+Robert Reed <robert.reed@vanderbilt.edu>
+"Weller, Robert A" <robert.a.weller@vanderbilt.edu>
+Trevor Thornton <t.thornton@asu.edu>
+lloyd.massengill@vanderbilt.edu
+Wayne Johnson <johnsr7@auburn.edu>
+Guofu Niu <niuguof@auburn.edu>
+Kurt Moen <kmoen@ece.gatech.edu>
+Michael Alles <mike.alles@vanderbilt.edu>
+Jeff Black <jeffrey.d.black@vanderbilt.edu>
+Stan Phillips <stan.phillips@gatech.edu>
+Ben Blalock <bblalock@eecs.utk.edu>
+Fa Dai <fosterdai@auburn.edu>
+Jia Di <jdi@uark.edu>
+Daniel Loveless <daniel.loveless@vanderbilt.edu>
+Steve Horst <shorst@ece.gatech.edu>
+Sachin Seth <sachin@gatech.edu>
+Joseph Bardin <jbardin@ecs.umass.edu>
+mcclupa@umd.edu <mcclupa@umd.edu>
+Ryan Diestelhorst <ryan@ece.gatech.edu>
+Troy England <tengland3@gatech.edu>
+Bill Kuhn <wkuhn@ksu.edu>
+Juan Carlos Balda <jbalda@uark.edu>
+"Shen, Shyh-Chiang" <shyh.shen@ece.gatech.edu>
+Alex Grillo <grillo@scipp.ucsc.edu>
+Rajan Arora <arora@ece.gatech.edu>
+j.kauppila@vanderbilt.edu
+Ken Galloway <kenneth.f.galloway@vanderbilt.edu>

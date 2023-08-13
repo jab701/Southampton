@@ -1,0 +1,574 @@
+TRST ON;
+TRST OFF;
+ENDIR IDLE;
+ENDDR IDLE;
+
+HIR 0;
+HDR 0;
+TIR 0;
+TDR 0;
+
+! Write to the registers
+SIR 4 TDI (3);
+SDR 8 TDI (00);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (01);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (02);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (03);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (04);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (05);
+SIR 4 TDI (4);
+SDR 8 TDI (FF);
+
+SIR 4 TDI (3);
+SDR 8 TDI (06);
+SIR 4 TDI (4);
+SDR 8 TDI (20);
+
+SIR 4 TDI (3);
+SDR 8 TDI (07);
+SIR 4 TDI (4);
+SDR 8 TDI (74);
+
+SIR 4 TDI (3);
+SDR 8 TDI (08);
+SIR 4 TDI (4);
+SDR 8 TDI (56);
+
+SIR 4 TDI (3);
+SDR 8 TDI (09);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (0A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (0B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (0C);
+SIR 4 TDI (4);
+SDR 8 TDI (A5);
+
+SIR 4 TDI (3);
+SDR 8 TDI (0D);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (0E);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (0F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (10);
+SIR 4 TDI (4);
+SDR 8 TDI (05);
+
+SIR 4 TDI (3);
+SDR 8 TDI (11);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (12);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (13);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (14);
+SIR 4 TDI (4);
+SDR 8 TDI (6A);
+
+SIR 4 TDI (3);
+SDR 8 TDI (15);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (16);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (17);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (18);
+SIR 4 TDI (4);
+SDR 8 TDI (30);
+
+SIR 4 TDI (3);
+SDR 8 TDI (19);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (1A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (1B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (1C);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (1D);
+SIR 4 TDI (4);
+SDR 8 TDI (40);
+
+SIR 4 TDI (3);
+SDR 8 TDI (1E);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (1F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (20);
+SIR 4 TDI (4);
+SDR 8 TDI (0A);
+
+SIR 4 TDI (3);
+SDR 8 TDI (21);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (22);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (23);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (24);
+SIR 4 TDI (4);
+SDR 8 TDI (74);
+
+SIR 4 TDI (3);
+SDR 8 TDI (25);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (26);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (27);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (28);
+SIR 4 TDI (4);
+SDR 8 TDI (01);
+
+SIR 4 TDI (3);
+SDR 8 TDI (29);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (2A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (2B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (2C);
+SIR 4 TDI (4);
+SDR 8 TDI (09);
+
+SIR 4 TDI (3);
+SDR 8 TDI (2D);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (2E);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (2F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (30);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (31);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (32);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (33);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (34);
+SIR 4 TDI (4);
+SDR 8 TDI (06);
+
+SIR 4 TDI (3);
+SDR 8 TDI (35);
+SIR 4 TDI (4);
+SDR 8 TDI (48);
+
+SIR 4 TDI (3);
+SDR 8 TDI (36);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (37);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (38);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (39);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (3A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (3B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (3C);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (3D);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (3E);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (3F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (40);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (41);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (42);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (43);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (44);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (45);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (46);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (47);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (48);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (49);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (4A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (4B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (4C);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (4D);
+SIR 4 TDI (4);
+SDR 8 TDI (B8);
+
+SIR 4 TDI (3);
+SDR 8 TDI (4E);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (4F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (50);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (51);
+SIR 4 TDI (4);
+SDR 8 TDI (B8);
+
+SIR 4 TDI (3);
+SDR 8 TDI (52);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (53);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (54);
+SIR 4 TDI (4);
+SDR 8 TDI (0C);
+
+SIR 4 TDI (3);
+SDR 8 TDI (55);
+SIR 4 TDI (4);
+SDR 8 TDI (B3);
+
+SIR 4 TDI (3);
+SDR 8 TDI (56);
+SIR 4 TDI (4);
+SDR 8 TDI (0C);
+
+SIR 4 TDI (3);
+SDR 8 TDI (57);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (58);
+SIR 4 TDI (4);
+SDR 8 TDI (0C);
+
+SIR 4 TDI (3);
+SDR 8 TDI (59);
+SIR 4 TDI (4);
+SDR 8 TDI (B8);
+
+SIR 4 TDI (3);
+SDR 8 TDI (5A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (5B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (5C);
+SIR 4 TDI (4);
+SDR 8 TDI (03);
+
+SIR 4 TDI (3);
+SDR 8 TDI (5D);
+SIR 4 TDI (4);
+SDR 8 TDI (BF);
+
+SIR 4 TDI (3);
+SDR 8 TDI (5E);
+SIR 4 TDI (4);
+SDR 8 TDI (01);
+
+SIR 4 TDI (3);
+SDR 8 TDI (5F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (60);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (61);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (62);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (63);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (64);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (65);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (66);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (67);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (68);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (69);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (6A);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (6B);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (6C);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (6D);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (6E);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+SIR 4 TDI (3);
+SDR 8 TDI (6F);
+SIR 4 TDI (4);
+SDR 8 TDI (00);
+
+! Save to EEROM
+SIR 4 TDI(6);
+SDR 8 TDI(00);

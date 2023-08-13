@@ -1,0 +1,390 @@
+
+library STD;
+use STD.textio.all;                     -- basic I/O
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.std_logic_textio.all;          -- I/O for logic types
+
+
+entity TBLibNeuron is
+  constant TimeResolution : natural := 32;
+end TBLibNeuron;
+
+architecture TimerTB of TBLibNeuron is
+  signal Clock    : std_logic := '0';
+  signal nReset   : std_logic := '0';
+  signal Start    : std_logic := '0';
+  signal Period   : std_logic_vector((TimeResolution-1) downto 0);
+  signal Finished : std_logic;
+  signal Reg_In   : std_logic_vector((TimeResolution*2)+3 downto 0);
+  signal Reg_Out  : std_logic_vector((TimeResolution*2)+3 downto 0);
+begin
+  
+Timer_1: entity work.timer_com
+  generic map(TimerBits => TimeResolution)
+  port map( 
+           -- System Control Input Signals
+           nReset  => nReset,
+           Reg_In  => Reg_In,
+           Reg_Out => Reg_Out,
+           -- Combinatorial Input Signals
+           Start     => Start,
+           Period_In => Period,
+           -- Combinatorial Output Signals
+           Finish => Finished);   
+
+process (Clock) is
+begin
+  if (rising_edge(Clock)) then
+    Reg_In <= Reg_Out;  
+  end if;
+end process;
+
+Clock <= NOT(Clock) after 500 ns;
+nReset <= '0', '1' after 500 ns; 
+Period <= x"000003E8";
+Start <= '0', '1' after 2 us, '0' after 3 us; 
+end architecture TimerTB;
+
+architecture NeuronBlocksTB of TBLibNeuron is
+signal Clock  : std_logic := '0';
+signal nReset : std_logic := '0'; 
+
+signal SynSum : std_logic_vector(15 downto 0);
+signal Ex_In : std_logic;
+signal Inh_In : std_logic;
+-- Static Input Signals
+signal ExThreshold : std_logic_vector(15 downto 0);
+signal InThreshold : std_logic_vector(15 downto 0);
+
+signal OscPhase  : std_logic_vector((TimeResolution-1) downto 0);
+signal OscPeriod : std_logic_vector((TimeResolution-1) downto 0);
+
+signal APTime : std_logic_vector((TimeResolution-1) downto 0); 
+signal RefTime : std_logic_vector((TimeResolution-1) downto 0); 
+signal NBurst : std_logic_vector(7 downto 0);       
+-- Combinatorial Output Signals
+signal Ex_Out  : std_logic;
+signal Inh_Out : std_logic;
+
+signal OscOut1 : std_logic;
+signal OscOut2 : std_logic;
+
+signal Axon_Off : std_logic;
+signal Axon_On : std_logic;
+
+signal Osc1_Reg_In : std_logic_vector((TimeResolution*2)+8 downto 0);
+signal Osc2_Reg_In : std_logic_vector((TimeResolution*2)+8 downto 0);
+signal Burst_Reg_In : std_logic_vector(((TimeResolution*2)+17) downto 0); 
+
+signal Osc1_Reg_Out : std_logic_vector((TimeResolution*2)+8 downto 0);
+signal Osc2_Reg_Out : std_logic_vector((TimeResolution*2)+8 downto 0);
+signal Burst_Reg_Out : std_logic_vector(((TimeResolution*2)+17) downto 0);
+begin
+  
+process (Clock) is
+begin
+if rising_edge(Clock) then
+  Osc1_Reg_In <= Osc1_Reg_Out;
+  Osc2_Reg_In <= Osc2_Reg_Out;
+  Burst_Reg_In <=  Burst_Reg_Out;
+end if;
+end process;  
+
+SynSum <= x"0000",
+          x"0001" after 1 ms,
+          x"0002" after 2 ms,
+          x"0003" after 3 ms,
+          x"0002" after 4 ms,
+          x"0001" after 5 ms,
+          x"0000" after 6 ms,
+          x"FFFF" after 7 ms,
+          x"FFFE" after 8 ms,
+          x"FFFD" after 9 ms,
+          x"FFFE" after 10 ms,
+          x"FFFF" after 11 ms,
+          x"0000" after 12 ms;
+
+ExThreshold <= x"0002";
+InThreshold <= x"FFFE";
+
+
+Clock <= NOT(Clock) after 500 ns;
+nReset <= '0', '1' after 500 ns;
+
+OscPhase <= x"000003E8";
+OscPeriod <= x"000007D0";
+
+APTime  <= x"000003E8";
+RefTime <= x"000007D0";
+NBurst  <= x"02", x"FF" after 9 ms;
+Ex_In      <= '0', '1' after 1 ms, '0' after 1.1 ms, '1' after 10 ms, '0' after 10.1 ms;
+Inh_In     <= '0', '1' after 18.5 ms, '0' after 18.6 ms;
+
+Thresh1: entity work.Threshold_Com
+  port map(-- Register Inputs
+           SynSum => SynSum,
+           -- Static Input Signals
+           ExThreshold => ExThreshold,
+           InThreshold => InThreshold,       
+           -- Combinatorial Output Signals
+           Ex  => Ex_Out,
+           Inh => Inh_Out); 
+           
+osc1: entity work.osc_com
+  generic map(TimeResolution)
+  port map(nReset => nReset,
+           Reg_In => Osc1_Reg_In,
+           Reg_Out => Osc1_Reg_Out,
+           PhaseDelay => OscPhase,
+           PeriodTime => OscPeriod,
+           Phase_En => '0',
+           Output => OscOut1);  
+
+osc2: entity work.osc_com
+  generic map(TimeResolution)
+  port map(nReset => nReset,
+           Reg_In => Osc2_Reg_In,
+           Reg_Out => Osc2_Reg_Out,
+           PhaseDelay => OscPhase,
+           PeriodTime => OscPeriod,
+           Phase_En => '1',
+           Output => OscOut2);
+           
+Burst1: entity work.burst_com
+  generic map(TimeResolution)
+  port map(nReset => nReset,
+           Reg_In => Burst_Reg_In,
+           Reg_Out => Burst_Reg_Out,
+           APTime => APTime,
+           RefTime => RefTime,
+           NBurst => NBurst,
+           Ex => Ex_In,
+           Inh => Inh_In,
+           AP_ON => Axon_On,
+           AP_OFF => Axon_Off);                          
+end architecture NeuronBlocksTB;
+
+architecture Neuron1TB of TBLibNeuron is
+signal Clock  : std_logic := '0';
+signal CKE    : std_logic := '1';
+signal nReset : std_logic := '0';
+signal Axon1_on : std_logic;
+signal Axon2_on : std_logic;
+signal Axon1_off : std_logic;
+signal Axon2_off : std_logic;
+
+signal SynSum : std_logic_vector(15 downto 0);
+
+signal Parameters1 : std_logic_vector(103 downto 0); 
+signal Parameters2 : std_logic_vector(103 downto 0); 
+
+signal Reg_In1 : std_logic_vector(((TimeResolution*2)+17) downto 0);
+signal Reg_Out1 : std_logic_vector(((TimeResolution*2)+17) downto 0);
+
+signal Reg_In2 : std_logic_vector(((TimeResolution*2)+17) downto 0);
+signal Reg_Out2 : std_logic_vector(((TimeResolution*2)+17) downto 0);
+begin
+Clock <= NOT(Clock) after 500 ns;
+nReset <= '0', '1' after 500 ns;
+
+SynSum <= x"0000",
+          x"0003" after 0.5 ms,
+          x"0000" after 0.6 ms,
+          x"0003" after 10.0 ms,
+          x"0000" after 10.1 ms,
+          x"FFFF" after 11.0 ms,
+          x"0000" after 11.1 ms;
+
+Parameters1(15 downto 0)   <= x"0002";
+Parameters1(31 downto 16)  <= x"FFFF";
+Parameters1(63 downto 32)  <= x"000003E8";
+Parameters1(95 downto 64)  <= x"000007D0";
+Parameters1(103 downto 96) <= x"03";
+
+Parameters2(15 downto 0)   <= x"0002";
+Parameters2(31 downto 16)  <= x"FFFF";
+Parameters2(63 downto 32)  <= x"000003E8";
+Parameters2(95 downto 64)  <= x"000007D0";
+Parameters2(103 downto 96) <= x"FF";
+
+
+process (Clock) is
+  begin
+    if rising_edge(Clock) then
+      Reg_In1 <= Reg_Out1;    
+      Reg_In2 <= Reg_Out2;
+    end if;
+end process;
+
+Neuron1: entity work.Neuron1_Com
+	generic map (TimerBits => TimeResolution)
+  port map (-- System Control Input Signals
+            nReset => nReset,
+            -- Register Inputs
+            Reg_In => Reg_In1,
+            -- Register Outputs  
+            Reg_Out => Reg_Out1,
+            SynSum => SynSum,
+            -- Static Input Signals
+            Parameters => Parameters1,
+            -- Combinatorial Output Signals
+            AP_ON   => Axon1_on,
+            AP_OFF  => Axon1_off);   
+
+Neuron2: entity work.Neuron1_Com
+	generic map (TimerBits => TimeResolution)
+  port map (-- System Control Input Signals
+            nReset => nReset,
+            -- Register Inputs
+            Reg_In => Reg_In2,
+            -- Register Outputs  
+            Reg_Out => Reg_Out2,
+            SynSum => SynSum,
+            -- Static Input Signals
+            Parameters => Parameters2,
+            -- Combinatorial Output Signals
+            AP_ON   => Axon2_on,
+            AP_OFF  => Axon2_off);  
+end architecture Neuron1TB;
+
+architecture Neuron2TB of TBLibNeuron is
+signal Clock  : std_logic := '0';
+signal nReset : std_logic := '0';
+signal Axon1_on : std_logic;
+signal Axon2_on : std_logic;
+signal Axon1_off : std_logic;
+signal Axon2_off : std_logic;
+
+signal Parameters : std_logic_vector(135 downto 0);
+
+
+signal Reg_In1  : std_logic_vector((TimeResolution*4)+26 downto 0);
+signal Reg_Out1 : std_logic_vector((TimeResolution*4)+26 downto 0);
+
+signal Reg_In2  : std_logic_vector((TimeResolution*4)+26 downto 0);
+signal Reg_Out2 : std_logic_vector((TimeResolution*4)+26 downto 0);
+begin
+  
+process (Clock) is
+begin
+if rising_edge(Clock) then
+  Reg_In1 <= Reg_Out1;
+  Reg_In2 <= Reg_Out2;
+end if;
+end process;   
+  
+Clock <= NOT(Clock) after 500 ns;
+nReset <= '0', '1' after 500 ns;
+
+Parameters(31 downto 0)    <= x"00001388";
+Parameters(63 downto 32)   <= x"00002710";
+Parameters(95 downto 64)   <= x"000003E8";
+Parameters(127 downto 96)  <= x"000007D0";
+Parameters(135 downto 128) <= x"02";
+  
+Neuron1: entity work.Neuron2_Com
+	generic map (TimerBits => TimeResolution)
+  port map (-- System Control Input Signals
+            nReset => nReset,
+            -- Register Inputs
+            Reg_In => Reg_In1,
+            -- Register Outputs  
+            Reg_Out => Reg_Out1,
+            -- Static Input Signals
+            Parameters => Parameters,
+            Phase_Enable => '0',
+            -- Combinatorial Output Signals
+            AP_ON   => Axon1_on,
+            AP_OFF  => Axon1_off);   
+
+Neuron2: entity work.Neuron2_Com
+	generic map (TimerBits => TimeResolution)
+  port map (-- System Control Input Signals
+            nReset => nReset,
+            -- Register Inputs
+            Reg_In => Reg_In2,
+            -- Register Outputs  
+            Reg_Out => Reg_Out2,
+            -- Static Input Signals
+            Parameters => Parameters,
+            Phase_Enable => '1',
+            -- Combinatorial Output Signals
+            AP_ON   => Axon2_on,
+            AP_OFF  => Axon2_off); 
+end architecture Neuron2TB;
+
+architecture SynapsesTB of TBLibNeuron is
+signal Clock : std_logic := '0';
+signal nReset : std_logic := '0';
+ 
+signal Reg_In  : std_logic_vector(((TimeResolution*2)+24) downto 0);
+signal Reg_Out : std_logic_vector(((TimeResolution*2)+24) downto 0); 
+
+signal Parameters : std_logic_vector((TimeResolution*2)+16 downto 0);
+signal SynWeight : std_logic_vector(15 downto 0);
+signal DelayTime : std_logic_vector((TimeResolution - 1) downto 0);
+signal DurationTime : std_logic_vector((TimeResolution - 1) downto 0);
+signal Axon : std_logic; 
+
+signal SynFlag : std_logic; 
+signal SynOutput : std_logic_vector(15 downto 0);
+         
+begin
+Clock <= NOT(Clock) after 500 ns;
+nReset <= '0', '1' after 500 ns;
+
+process (Clock) is
+begin
+if rising_edge(Clock) then
+  Reg_In <= Reg_Out;
+end if;
+end process;
+
+Axon <= '0',
+        '1' after 1 ms,
+        '0' after 1.1 ms,
+        '1' after 5.0 ms,
+        '0' after 5.1 ms;
+
+Parameters(15 downto 0) <= x"0001";
+Parameters(47 downto 16) <= x"000003E8";
+Parameters(79 downto 48) <= x"000007D0";      
+        
+Synapse1: entity work.Synapse_Com
+  generic map(TimerBits => TimeResolution)
+  port map(-- System Control Input Signals
+           nReset => nReset,
+	         -- Register Inputs
+	         Reg_In => Reg_In,
+	         -- Register Outputs  
+	         Reg_Out => Reg_Out,        
+           -- Static Input Signals
+           Parameters => Parameters,    
+           Axon => Axon,
+           -- Combinatorial Output Signals
+           SynWeightFlag => SynFlag,
+           SynWeightOut => SynOutput);         
+
+end architecture SynapsesTB;
+
+--########################### This is the default architecture #########################--
+--# It prints a message saying the user should select one of the other architectures   #--
+--# Put all testbench architectures before this one, this must be the last in the file #--
+--######################################################################################--
+architecture Default of TBLibNeuron is
+begin
+  
+process is
+  variable my_line : line;  -- type 'line' comes from textio
+begin
+write(my_line,string'("You have selected the default architecture for simulation!"));
+writeline(output,my_line);
+write(my_line,string'("This architecture does nothing, please select one of the other testbench architectures for simulation."));
+writeline(output,my_line);
+wait;
+end process;  
+end architecture Default;

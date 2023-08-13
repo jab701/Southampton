@@ -1,0 +1,53 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity uart_serializer is
+  generic(PacketLength : natural := 32);  
+  port 
+  (
+     signal clock   : in std_logic;
+     signal nReset  : in std_logic;
+     
+     signal DATA_IN : in std_logic_vector(PacketLength-1 downto 0);
+     signal SHIFT_EN : in std_logic;
+     
+     signal Serial_Out    : out std_logic); 
+end entity uart_serializer;
+
+architecture Behavioural of uart_serializer is
+
+signal D : std_logic_vector(PacketLength-1 downto 0);
+signal Q : std_logic_vector(PacketLength-1 downto 0);
+
+begin
+Serial_Out <= Q(0);
+
+process (SHIFT_EN, DATA_IN, Q) is
+begin
+  if (SHIFT_EN = '0') then
+    D <= DATA_IN; -- Data
+  else
+    D(PacketLength-2 downto 0) <= Q(PacketLength-1 downto 1);
+    D(PacketLength-1) <= '1';  
+  end if;
+end process; 
+
+process (Clock) is
+begin
+  if rising_edge(Clock) then
+    if (nReset = '0') then
+      Q <= (others => '0');
+    else
+      Q <= D;
+    end if;
+  end if;   
+end process;
+
+
+end architecture Behavioural;
+
+
+
+

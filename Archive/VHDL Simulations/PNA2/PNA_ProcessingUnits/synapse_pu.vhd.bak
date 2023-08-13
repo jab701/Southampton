@@ -1,0 +1,175 @@
+----------------------------------------------------------------------------------
+-- Company: 	ESD Group, School of Electronics, University Of Southampton
+-- Engineer:	Julian A Bailey <jab@ecs.soton.ac.uk>
+-- 
+-- Create Date:  26th October 2010
+-- Project Name: LibNeuron 2.0
+-- Module Name:  
+-- Description:  
+--
+-- Dependencies: None
+--
+-- Revision: 1.00 
+--
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+library PNA_LibNeuron_com;
+
+entity synapse_pu is
+  generic 
+  (
+     -- Module Specific Configuration Parameters
+     address_width : natural := 8;
+     parameter_width : natural := 97
+  );
+  port 
+  (
+     signal clock   : in  std_logic;
+     signal nreset  : in std_logic;
+     signal ce      : in std_logic;
+     
+     signal Trigger : in std_logic;
+     signal Running : out std_logic;
+     
+     signal BankSelect   : in std_logic;
+     
+     signal NumSynapses : in std_logic_vector((address_width-1) downto 0);
+     
+     signal Param_Write : in std_logic_vector(parameter_width-1 downto 0);
+     signal Param_Write_Addr : in std_logic_vector((address_width-1) downto 0);
+     signal Param_We   : in std_logic;
+
+     signal Enable_Write : in std_logic;
+     signal Enable_Write_Addr : in std_logic_vector((address_width-1) downto 0);
+     signal Enable_We : in std_logic;
+          
+     signal pu_addrunit_out : out std_logic_vector((address_width-1) downto 0);
+     signal pu_we_out : out std_logic;
+     
+     signal PreSynNeuronAddr : out std_logic_vector((address_width-1) downto 0);
+     signal PreSynNeuronType1or2 : out std_logic;
+     signal Axon_In   : in std_logic;
+     
+     signal PostSynNeuronAddr : out std_logic_vector((address_width-1) downto 0);
+     signal SynSum_In  : in std_logic_vector(15 downto 0);
+     signal SynSum_Out : out std_logic_vector(15 downto 0)); 
+end entity synapse_pu;
+
+architecture Behavioural of synapse_pu is
+signal nReset_ex_pu : std_logic;
+signal nReset_ex : std_logic;
+
+signal pu_address : std_logic_vector((address_width-1) downto 0);
+signal pu_we : std_logic;
+
+signal AddrUnit_Running : std_logic;
+signal AddrUnit_Go : std_logic;
+
+signal Enable : std_logic;
+
+signal State_In : std_logic_vector(35 downto 0);
+signal State_Out : std_logic_vector(35 downto 0);
+
+signal Parameters : std_logic_vector(81+(address_width*2)-1 downto 0);
+
+signal SynWeight : std_logic_vector(15 downto 0);
+
+begin
+
+nReset_ex <= nReset_ex_pu AND Enable;
+
+pu_addrunit_out <= pu_address;
+pu_we_out <= pu_we;
+
+PreSynNeuronAddr  <= Parameters(80+address_width-1 downto 80);
+PreSynNeuronType1or2 <= Parameters(81+(address_width*2)-1);
+PostSynNeuronAddr <= Parameters(80+(address_width*2)-1 downto 80+address_width);
+
+S_pu_mem: entity work.N1_Mem_Ctrl
+	generic map(-- Module Specific Configuration Parameters
+	            address_width => address_width,
+	            state_data_width => 36,
+	            param_data_width => parameter_width)
+	port map(clock     => Clock,
+	         banksel   => BankSelect,
+	   
+	         state_we  => pu_we,
+	         param_we  => Param_we,
+	         enable_we => Enable_we,
+	   
+	         addr_state_read  => pu_address,
+	         addr_param_read  => pu_address,
+	         addr_enable_read => pu_address,
+	   
+	         addr_state_write  => pu_address,
+	         addr_param_write  => Param_Write_addr,
+	         addr_enable_write => Enable_Write_Addr,	   
+
+	         data_state_read  => State_In,
+	         data_param_read  => Parameters,
+	         data_enable_read => Enable,
+	   
+	         data_state_write  => State_Out,
+	         data_param_write  => Param_Write,
+	         data_enable_write => Enable_Write);
+	         
+pu_controller_1: entity work.pu_controller
+                 port map(Clock   => Clock,
+                          nReset  => nReset,
+                          ce => ce,
+                          
+                          Trigger => Trigger,
+                          AddrUnit_Running => AddrUnit_Running,
+                          
+                          Running => Running,
+                          nReset_Ex   => nReset_ex_pu,
+                          AddrUnit_Go => AddrUnit_Go);
+                            
+address_unit1: entity work.addressunit2
+               generic map(Address_Width =>address_width)
+               port map(Clock => Clock,
+                        nReset => nReset,
+                        ce => ce,
+                        Go => AddrUnit_Go,
+                        AddressMax => NumSynapses,
+                        Address => pu_Address,
+                        we => pu_we,
+                        Running => AddrUnit_Running);
+                          
+-- execution pipeline phase
+Synapse_ex: entity PNA_LibNeuron_com.Synapse_com
+            generic map(32)
+            port map(-- System Control Input Signals
+                     nReset => nReset_ex,
+                     -- Register Inputs
+                     Reg_In => State_In,
+                     -- Register Outputs  
+                     Reg_Out => State_Out,         
+                     -- Static Parameters
+                     SynWeight => Parameters(15 downto 0),      
+                     DelayTime => Parameters(47 downto 16),
+                     DurationTime => Parameters(79 downto 48),
+                     -- Combinatorial Input Signal         
+                     Axon => Axon_In,
+                     -- Combinatorial Output Signals
+                     SynWeightOut => SynWeight);
+                     
+process (Parameters, SynSum_In, SynWeight) is
+begin
+  if (Parameters(80+(address_width*2)) = '1') then
+    SynSum_Out <= SynWeight;
+  else
+    SynSum_Out <= SynSum_In + SynWeight;  
+  end if;    
+end process;
+                                      
+end architecture Behavioural;
+
+

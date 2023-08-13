@@ -1,0 +1,39 @@
+The system is set up as two VHDL libraries, LibNeuron and LibElegans.
+
+The compile order of LibNeuron should be as follows:
+Typedefinitions.vhd
+Timer.vhd
+Threshold.vhd
+BurstBlock.vhd
+Oscillator.vhd
+Neuron1.vhd
+Neuron2.vhd
+Synapse.vhd
+Synapse_Adv.vhd
+
+LibElegans needs LibNeuron to compile, the files should be compiled in this order:
+Neuron_Types.vhd
+Synapse_Types.vhd
+DriverNeuron_Types.vhd
+Loco_Unit.vhd
+C_ElegansLoco.vhd (TOP LEVEL MODULE).
+
+Two testbenches are included in LibElegans. 
+TB_ElegansLoco.vhd runs a simple forward-backwards pattern. Run this for 20 seconds.
+TB_ElegansLoco2.vhd runs a simple coiling motion. Run for 15 seconds although less probably needed.
+
+The C.Elegans top level:
+INPUTS:
+Clock - 1MHz Clock for Real-time
+nReset - Async Active-low reset
+CKE    - Active High Clock Enable. Allows the model to be paused.
+NR_ON  - Enables Forward Movement
+TS_ON  - Enables Backward Movement
+COIL_ON - Enables Coiling
+OUTPUTS:
+NRD/NRV - Nerve ring driver outputs on dorsal and ventral sides
+AVA     - Pattern pacer neuron for reverse locomotion
+AVB     - Pattern Pacer neuron for forward locomotion
+MSCD    - Motor neuron (Muscle) output on dorsal side (from head to tail)
+MSCV    - As above but ventral side
+TSD/TSV - Tail Section driver outputs on dorsal and ventral sides.
